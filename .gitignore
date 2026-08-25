@@ -1,0 +1,17 @@
+.DS_Store
+
+# Local editor and environment files
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+
+# Dependency and build output directories if a future tool needs them
+node_modules/
+dist/
+build/
+coverage/
+
+# Local preview artifacts
+*.log

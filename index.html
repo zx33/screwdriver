@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7fb" />
+    <title>Markdown Review</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">M<span>Δ</span></div>
+          <div>
+            <p class="eyebrow">DOCUMENT REVIEW</p>
+            <h1>Markdown Review</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="button button-quiet" id="load-example" type="button">载入示例</button>
+          <button class="button button-quiet" id="clear-all" type="button">清空</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="input-section panel" aria-labelledby="input-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">COMPARE TWO DOCUMENTS</p>
+              <h2 id="input-title">选择要对比的 Markdown 版本</h2>
+            </div>
+            <p class="helper-text">内容只在当前浏览器中处理，不会上传。</p>
+          </div>
+
+          <div class="input-grid">
+            <article class="editor-card editor-card-old">
+              <div class="editor-card-heading">
+                <div>
+                  <span class="version-dot version-dot-old"></span>
+                  <span class="card-label">基准版本</span>
+                  <span class="card-caption">修改前</span>
+                </div>
+                <span class="char-count" id="old-count">0 字符</span>
+              </div>
+              <textarea id="old-input" spellcheck="false" placeholder="粘贴修改前的 Markdown…"></textarea>
+            </article>
+
+            <article class="editor-card editor-card-new">
+              <div class="editor-card-heading">
+                <div>
+                  <span class="version-dot version-dot-new"></span>
+                  <span class="card-label">目标版本</span>
+                  <span class="card-caption">修改后</span>
+                </div>
+                <span class="char-count" id="new-count">0 字符</span>
+              </div>
+              <textarea id="new-input" spellcheck="false" placeholder="粘贴修改后的 Markdown…"></textarea>
+            </article>
+          </div>
+
+          <div class="control-bar">
+            <div class="control-group">
+              <span class="control-label">显示</span>
+              <div class="segmented" role="group" aria-label="显示模式">
+                <button class="segment is-active" data-view-mode="inline" type="button">修订视图</button>
+                <button class="segment" data-view-mode="side-by-side" type="button">源码并排</button>
+              </div>
+            </div>
+            <div class="control-group">
+              <span class="control-label">粒度</span>
+              <div class="segmented" role="group" aria-label="差异粒度">
+                <button class="segment is-active" data-granularity="word" type="button">Word</button>
+                <button class="segment" data-granularity="char" type="button">Char</button>
+              </div>
+            </div>
+            <div class="control-spacer"></div>
+            <span class="compare-status" id="compare-status">等待输入</span>
+            <button class="button button-primary" id="compare-button" type="button">
+              <span class="button-icon" aria-hidden="true">↗</span>
+              重新比较
+            </button>
+          </div>
+        </section>
+
+        <section class="summary-section" aria-labelledby="summary-title">
+          <div class="summary-heading">
+            <div>
+              <p class="eyebrow">CHANGE SUMMARY</p>
+              <h2 id="summary-title">修改概览</h2>
+            </div>
+            <span class="summary-note" id="summary-note">尚未开始比较</span>
+          </div>
+          <div class="summary-grid">
+            <article class="stat-card stat-card-added">
+              <span class="stat-label" id="added-label">新增词</span>
+              <strong class="stat-value" id="added-value">—</strong>
+              <span class="stat-subtitle">目标版本中出现</span>
+            </article>
+            <article class="stat-card stat-card-removed">
+              <span class="stat-label" id="removed-label">删除词</span>
+              <strong class="stat-value" id="removed-value">—</strong>
+              <span class="stat-subtitle">基准版本中存在</span>
+            </article>
+            <article class="stat-card stat-card-lines">
+              <span class="stat-label">修改行</span>
+              <strong class="stat-value" id="changed-lines-value">—</strong>
+              <span class="stat-subtitle" id="line-summary">新增 0 · 删除 0</span>
+            </article>
+            <article class="stat-card stat-card-hunks">
+              <span class="stat-label">修改区域</span>
+              <strong class="stat-value" id="hunks-value">—</strong>
+              <span class="stat-subtitle">连续变化的区段</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="diff-section panel" aria-labelledby="diff-title">
+          <div class="diff-heading">
+            <div>
+              <p class="eyebrow">REVIEW CHANGES</p>
+              <h2 id="diff-title">修改预览</h2>
+            </div>
+            <div class="diff-navigation">
+              <span id="change-position">0 / 0</span>
+              <button class="icon-button" id="previous-change" type="button" aria-label="上一个修改">↑</button>
+              <button class="icon-button" id="next-change" type="button" aria-label="下一个修改">↓</button>
+            </div>
+          </div>
+          <div class="legend" aria-label="颜色说明">
+            <span class="legend-item legend-item-add"><i class="legend-swatch legend-add"></i>新增</span>
+            <span class="legend-item legend-item-remove"><i class="legend-swatch legend-remove"></i>删除</span>
+            <span class="legend-item legend-item-context"><i class="legend-swatch legend-context"></i>未修改</span>
+          </div>
+          <div id="diff-root" class="diff-root">
+            <div class="empty-state">
+              <div class="empty-icon" aria-hidden="true">Δ</div>
+              <h3>输入两份 Markdown 开始比较</h3>
+              <p>修改会以 Overleaf 风格的颜色和删除线标出。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Markdown Review · local-first</span>
+        <span>支持中文字符级 diff</span>
+      </footer>
+    </div>
+
+    <script src="diff-engine.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
