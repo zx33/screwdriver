@@ -41,7 +41,7 @@
 仓库当前没有构建步骤。修改 `index.html`、`styles.css`、`app.js` 或 `diff-engine.js` 后，刷新浏览器即可检查效果。
 
 ```text
-markdown_diff_tools/
+screwdriver/
 ├── index.html
 ├── styles.css
 ├── app.js
@@ -56,4 +56,4 @@ markdown_diff_tools/
 
 ## License
 
-License 待补充。
+MIT License，详见 [`LICENSE`](LICENSE)。
