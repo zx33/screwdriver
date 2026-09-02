@@ -46,6 +46,10 @@ button {
   cursor: pointer;
 }
 
+.button {
+  text-decoration: none;
+}
+
 .app-shell {
   width: min(1440px, calc(100% - 48px));
   margin: 0 auto;
@@ -713,6 +717,407 @@ ins {
   font-size: 11px;
 }
 
+/* Markdown → Word */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.brand-mark-docx {
+  background: linear-gradient(145deg, #7540ae, #4e2b7c);
+  box-shadow: 0 9px 20px rgba(117, 64, 174, 0.24);
+  letter-spacing: -0.04em;
+}
+
+.brand-mark-docx span {
+  margin-left: 1px;
+  color: #e2cef5;
+}
+
+.converter-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 25px;
+}
+
+.converter-intro h2 {
+  max-width: 720px;
+  font-size: 21px;
+}
+
+.converter-lead {
+  max-width: 760px;
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.format-note {
+  display: flex;
+  min-width: 260px;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 15px;
+  border: 1px solid #e7dcef;
+  border-radius: 13px;
+  background: #fcf9ff;
+}
+
+.format-note div {
+  display: grid;
+  gap: 3px;
+}
+
+.format-note strong {
+  color: #4f315f;
+  font-size: 12px;
+}
+
+.format-note span:not(.format-badge) {
+  color: #907c9d;
+  font-size: 10px;
+}
+
+.format-badge {
+  display: grid;
+  min-width: 55px;
+  min-height: 35px;
+  place-items: center;
+  border-radius: 9px;
+  color: #fff;
+  background: var(--review);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.converter-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.converter-editor,
+.converter-preview {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.converter-card-heading {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 19px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.converter-card-heading .eyebrow {
+  margin-bottom: 3px;
+}
+
+.converter-card-heading h2 {
+  font-size: 16px;
+}
+
+.file-button {
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.drop-zone {
+  position: relative;
+  background: #fbfcfe;
+  transition: box-shadow 160ms ease, background 160ms ease;
+}
+
+.drop-zone.is-dragging {
+  background: #f4f0fa;
+  box-shadow: inset 0 0 0 2px rgba(117, 64, 174, 0.32);
+}
+
+.drop-zone textarea {
+  min-height: 616px;
+  padding: 21px 21px 50px;
+  line-height: 1.72;
+}
+
+.editor-meta {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  left: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 9px;
+  border-top: 1px solid rgba(229, 234, 241, 0.86);
+  color: #a0aabd;
+  background: rgba(251, 252, 254, 0.93);
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.preview-label {
+  padding: 5px 8px;
+  border-radius: 7px;
+  color: #7b879b;
+  background: #f3f5f8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.word-stage {
+  min-height: 666px;
+  max-height: 666px;
+  padding: 25px;
+  overflow: auto;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.32) 25%, transparent 25%) -8px 0/16px 16px,
+    #e9edf3;
+}
+
+.word-page {
+  width: min(100%, 680px);
+  min-height: 790px;
+  margin: 0 auto;
+  padding: 58px 62px 70px;
+  color: #202124;
+  background: #fff;
+  box-shadow: 0 10px 32px rgba(35, 46, 67, 0.14);
+  font-family: "Arial Unicode MS", Calibri, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.word-page h1,
+.word-page h2,
+.word-page h3,
+.word-page h4,
+.word-page h5,
+.word-page h6 {
+  color: #2e74b5;
+  font-family: "Arial Unicode MS", Calibri, "Segoe UI", sans-serif;
+  line-height: 1.2;
+}
+
+.word-page h1 {
+  margin: 21px 0 12px;
+  font-size: 22px;
+}
+
+.word-page h1:first-child {
+  margin-top: 0;
+}
+
+.word-page h2 {
+  margin: 19px 0 9px;
+  font-size: 18px;
+}
+
+.word-page h3 {
+  margin: 15px 0 7px;
+  color: #1f4d78;
+  font-size: 16px;
+}
+
+.word-page h4,
+.word-page h5,
+.word-page h6 {
+  margin: 13px 0 6px;
+  color: #25334c;
+  font-size: 14px;
+}
+
+.word-page p {
+  margin: 0 0 9px;
+}
+
+.word-page ul,
+.word-page ol {
+  margin: 0 0 11px;
+  padding-left: 26px;
+}
+
+.word-page li {
+  margin: 0 0 5px;
+}
+
+.word-page blockquote {
+  margin: 12px 0;
+  padding: 5px 0 5px 15px;
+  border-left: 4px solid #a875d1;
+  color: #555;
+  font-style: italic;
+}
+
+.word-page pre {
+  margin: 12px 0;
+  padding: 13px 15px;
+  overflow: auto;
+  border-radius: 3px;
+  color: #283244;
+  background: #f5f7fa;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.word-page :not(pre) > code {
+  padding: 1px 3px;
+  color: #7540ae;
+  background: #f5f1fa;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 0.92em;
+}
+
+.word-page a {
+  color: var(--blue);
+}
+
+.word-page hr {
+  margin: 17px 0;
+  border: 0;
+  border-top: 1px solid #d7deea;
+}
+
+.preview-table-wrap {
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.word-page table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 11px;
+}
+
+.word-page th,
+.word-page td {
+  padding: 7px 8px;
+  border: 1px solid #d7deea;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.word-page th {
+  background: #f2f4f7;
+}
+
+.preview-empty {
+  display: grid;
+  min-height: 660px;
+  place-items: center;
+  color: #a0aabd;
+  text-align: center;
+}
+
+.export-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(420px, 0.9fr);
+  gap: 30px;
+  align-items: end;
+  padding: 22px 24px 42px;
+}
+
+.export-copy h2 {
+  margin-bottom: 7px;
+}
+
+.export-copy p:last-child {
+  max-width: 700px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.export-controls {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+
+.filename-field {
+  display: grid;
+  flex: 1;
+  gap: 6px;
+  color: #7b879b;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.filename-field input {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  outline: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  color: #3b465d;
+  background: #fbfcfe;
+  font: 12px "SFMono-Regular", Consolas, monospace;
+}
+
+.filename-field input:focus {
+  border-color: #aebff0;
+  box-shadow: 0 0 0 3px rgba(53, 109, 243, 0.1);
+}
+
+.export-button {
+  min-height: 42px;
+  white-space: nowrap;
+}
+
+.export-status {
+  position: absolute;
+  right: 24px;
+  bottom: 15px;
+  left: 24px;
+  color: #9ba5b7;
+  font-size: 10px;
+  text-align: right;
+}
+
+.export-status.is-success {
+  color: var(--green);
+}
+
+.export-status.is-error {
+  color: var(--red);
+}
+
+.support-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.support-strip span {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #8490a5;
+  background: rgba(255, 255, 255, 0.74);
+  font-size: 10px;
+}
+
 @media (max-width: 900px) {
   .app-shell {
     width: min(100% - 28px, 760px);
@@ -726,6 +1131,37 @@ ins {
 
   .control-spacer {
     display: none;
+  }
+
+  .converter-intro,
+  .export-panel {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  .converter-intro {
+    flex-direction: column;
+  }
+
+  .format-note {
+    min-width: 0;
+  }
+
+  .converter-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .drop-zone textarea {
+    min-height: 430px;
+  }
+
+  .word-stage {
+    min-height: 570px;
+    max-height: 650px;
+  }
+
+  .word-page {
+    min-height: 720px;
   }
 }
 
@@ -784,5 +1220,43 @@ ins {
   .footer {
     gap: 8px;
     flex-direction: column;
+  }
+
+  .converter-intro,
+  .converter-card-heading,
+  .export-panel {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .converter-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .file-button {
+    width: 100%;
+  }
+
+  .word-stage {
+    padding: 11px;
+  }
+
+  .word-page {
+    min-height: 650px;
+    padding: 34px 28px 44px;
+  }
+
+  .export-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .export-button {
+    width: 100%;
+  }
+
+  .support-strip {
+    gap: 6px;
   }
 }

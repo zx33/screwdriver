@@ -23,11 +23,25 @@
 
 > 适合：论文、README、会议纪要、产品文案，以及所有“我明明只改了几处，怎么变成这样”的 Markdown 文件。
 
+### Markdown → Word
+
+一个不绕弯子的 Markdown 转 Word 工具：粘贴内容或拖入 `.md` 文件，直接在浏览器里生成真正的 `.docx`。
+
+![Markdown → Word 截图](screenshots/md-to-docx.jpg)
+
+- Word 原生结构：标题、列表、表格都保留为可编辑的 Word 元素
+- 常用 Markdown：粗体、斜体、删除线、链接、引用、代码块、分隔线和简单表格
+- 即时预览：导出前先看一眼接近 Word 的排版效果
+- 文件名清理：自动补上 `.docx`，也会避开 Word 不接受的文件名字符
+- 零上传：读取与生成都只发生在当前浏览器
+
+> 第一版只输出现代 `.docx`。老式二进制 `.doc` 不只是换个后缀，因此暂时不做“假装支持”。图片目前会保留为文字说明。
+
 ## 使用
 
-直接打开 [`index.html`](index.html) 即可使用；也可以在当前目录启动任意静态文件服务器。
+直接打开 [`index.html`](index.html) 使用 Markdown 对比，或打开 [`md-to-docx.html`](md-to-docx.html) 使用 Markdown → Word；也可以在当前目录启动任意静态文件服务器。
 
-所有对比都在浏览器本地完成，不会把文档上传到服务器。这个工具箱目前是纯前端、零依赖，拿来即用。
+所有处理都在浏览器本地完成，不会把文档上传到服务器。这个工具箱目前是纯前端、零依赖，拿来即用。
 
 ## 设计口味
 
@@ -38,7 +52,7 @@
 
 ## 开发
 
-仓库当前没有构建步骤。修改 `index.html`、`styles.css`、`app.js` 或 `diff-engine.js` 后，刷新浏览器即可检查效果。
+仓库当前没有构建步骤。修改 HTML、CSS 或对应的 JavaScript 后，刷新浏览器即可检查效果。
 
 ```text
 screwdriver/
@@ -46,8 +60,12 @@ screwdriver/
 ├── styles.css
 ├── app.js
 ├── diff-engine.js
+├── md-to-docx.html
+├── md-to-docx.js
+├── docx-engine.js
 └── screenshots/
-    └── markdown-review.jpg
+    ├── markdown-review.jpg
+    └── md-to-docx.jpg
 ```
 
 ## 隐私说明

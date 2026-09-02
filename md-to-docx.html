@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7fb" />
+    <title>Markdown → Word · Screwdriver</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell converter-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark brand-mark-docx" aria-hidden="true">M<span>W</span></div>
+          <div>
+            <p class="eyebrow">LOCAL DOCUMENT CONVERTER</p>
+            <h1>Markdown → Word</h1>
+          </div>
+        </div>
+        <nav class="topbar-actions" aria-label="工具切换">
+          <a class="button button-quiet" href="index.html">Markdown 对比</a>
+          <button class="button button-quiet" id="load-converter-example" type="button">载入示例</button>
+          <button class="button button-quiet" id="clear-converter" type="button">清空</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="converter-intro panel" aria-labelledby="converter-title">
+          <div>
+            <p class="eyebrow">TRUE DOCX · ZERO UPLOAD</p>
+            <h2 id="converter-title">把 Markdown 变成一份能继续编辑的 Word 文档</h2>
+            <p class="converter-lead">标题仍是标题，列表仍是列表，表格也不是截图。所有转换都在当前浏览器里完成。</p>
+          </div>
+          <div class="format-note" aria-label="输出格式说明">
+            <span class="format-badge">.docx</span>
+            <div><strong>第一版输出</strong><span>真正的 Office Open XML 文档</span></div>
+          </div>
+        </section>
+
+        <section class="converter-workspace">
+          <article class="converter-editor panel" aria-labelledby="markdown-input-title">
+            <div class="converter-card-heading">
+              <div>
+                <p class="eyebrow">MARKDOWN SOURCE</p>
+                <h2 id="markdown-input-title">Markdown 内容</h2>
+              </div>
+              <label class="button button-quiet file-button" for="markdown-file">选择 .md 文件</label>
+              <input id="markdown-file" class="visually-hidden" type="file" accept=".md,.markdown,text/markdown,text/plain" />
+            </div>
+            <div class="drop-zone" id="markdown-drop-zone">
+              <textarea id="markdown-source" spellcheck="false" placeholder="# 文档标题&#10;&#10;粘贴 Markdown，或把 .md 文件拖到这里…"></textarea>
+              <div class="editor-meta">
+                <span id="markdown-count">0 字符</span>
+                <span id="block-count">0 个内容块</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="converter-preview panel" aria-labelledby="word-preview-title">
+            <div class="converter-card-heading">
+              <div>
+                <p class="eyebrow">WORD PREVIEW</p>
+                <h2 id="word-preview-title">排版预览</h2>
+              </div>
+              <span class="preview-label">近似预览</span>
+            </div>
+            <div class="word-stage">
+              <div class="word-page" id="word-preview"></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="export-panel panel" aria-labelledby="export-title">
+          <div class="export-copy">
+            <p class="eyebrow">EXPORT</p>
+            <h2 id="export-title">保存为 Word 文档</h2>
+            <p>支持标题、段落、粗体、斜体、删除线、链接、引用、代码块、有序/无序列表、分隔线和简单表格。</p>
+          </div>
+          <div class="export-controls">
+            <label class="filename-field" for="docx-filename">
+              <span>文件名</span>
+              <input id="docx-filename" type="text" value="markdown-document.docx" autocomplete="off" />
+            </label>
+            <button class="button button-primary export-button" id="export-docx" type="button">
+              <span class="button-icon" aria-hidden="true">↓</span>
+              导出 .docx
+            </button>
+          </div>
+          <div class="export-status" id="export-status" role="status" aria-live="polite">准备就绪 · 内容不会上传</div>
+        </section>
+
+        <section class="support-strip" aria-label="格式支持范围">
+          <span>✓ 真实 Word 样式</span>
+          <span>✓ 中文与英文</span>
+          <span>✓ 浏览器本地生成</span>
+          <span>图片暂保留为文字说明</span>
+          <span>暂不输出老式 .doc</span>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Screwdriver · Markdown → Word</span>
+        <span>local-first · no upload</span>
+      </footer>
+    </div>
+
+    <script src="docx-engine.js"></script>
+    <script src="md-to-docx.js"></script>
+  </body>
+</html>
