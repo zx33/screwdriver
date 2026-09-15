@@ -25,7 +25,7 @@ final class TrayController {
     private var localMonitor: Any?
     private var globalMonitor: Any?
     private var observers: [NSObjectProtocol] = []
-    private var sleepObserver: NSObjectProtocol?
+    private var workspaceObservers: [NSObjectProtocol] = []
     private var stopping = false
 
     init(model: AppModel) {
@@ -35,7 +35,7 @@ final class TrayController {
         observers.append(center.addObserver(forName: NSApplication.didChangeScreenParametersNotification,
                                             object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in
-                self?.tray.stopOrganizing()
+                self?.tray.restoreAfterScreenChange()
                 self?.dismiss(handoff: true)
             }
         })
@@ -43,12 +43,20 @@ final class TrayController {
                                             object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in if self?.isShown == true { self?.tray.refresh() } }
         })
-        sleepObserver = NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.willSleepNotification,
-                                                                          object: nil, queue: .main) { [weak self] _ in
+        let workspaceCenter = NSWorkspace.shared.notificationCenter
+        workspaceObservers.append(workspaceCenter.addObserver(forName: NSWorkspace.willSleepNotification,
+                                                              object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in
-                self?.tray.stopOrganizing()
+                self?.tray.prepareForSleep()
                 self?.dismiss(handoff: true)
             }
+        })
+        for name in [NSWorkspace.didWakeNotification, NSWorkspace.screensDidWakeNotification] {
+            workspaceObservers.append(workspaceCenter.addObserver(forName: name, object: nil, queue: .main) { [weak self] _ in
+                Task { @MainActor in
+                    self?.tray.resumeAfterWake()
+                }
+            })
         }
     }
 
@@ -124,7 +132,7 @@ final class TrayController {
     private func open(_ extra: MenuExtra, action: String) {
         // Restore the original area before the app opens its own menu. Keep it
         // visible until the next tray dismissal; never collapse under a menu.
-        tray.revealOriginals()
+        tray.revealForMenu()
         dismiss(handoff: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
             guard let self, !self.stopping, self.model.settings.trayEnabled else { return }
@@ -142,7 +150,7 @@ final class TrayController {
         tray.shutdown()
         for observer in observers { NotificationCenter.default.removeObserver(observer) }
         observers = []
-        if let sleepObserver { NSWorkspace.shared.notificationCenter.removeObserver(sleepObserver) }
-        sleepObserver = nil
+        for observer in workspaceObservers { NSWorkspace.shared.notificationCenter.removeObserver(observer) }
+        workspaceObservers = []
     }
 }

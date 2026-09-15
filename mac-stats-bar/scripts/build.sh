@@ -21,8 +21,8 @@ if [[ "$task_flavor" == "preview" ]]; then
     /usr/libexec/PlistBuddy -c 'Set :CFBundleIdentifier local.macstatsbar.preview' "$task_bundle/Contents/Info.plist"
     /usr/libexec/PlistBuddy -c 'Set :CFBundleName Mac Stats Bar Preview' "$task_bundle/Contents/Info.plist"
     /usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName Mac Stats Bar Preview' "$task_bundle/Contents/Info.plist"
-    /usr/libexec/PlistBuddy -c 'Set :CFBundleShortVersionString 0.2.0' "$task_bundle/Contents/Info.plist"
-    /usr/libexec/PlistBuddy -c 'Set :CFBundleVersion 2' "$task_bundle/Contents/Info.plist"
+    /usr/libexec/PlistBuddy -c 'Set :CFBundleShortVersionString 0.2.1' "$task_bundle/Contents/Info.plist"
+    /usr/libexec/PlistBuddy -c 'Set :CFBundleVersion 3' "$task_bundle/Contents/Info.plist"
 fi
 task_signing_identity="${MAC_STATS_CODESIGN_IDENTITY:--}"
 codesign --force --sign "$task_signing_identity" "$task_bundle"

@@ -4,6 +4,17 @@ import CoreGraphics
 /// AppKit screen coordinates (origin at the bottom left). The tray may span the
 /// notch horizontally, but its entire surface stays below the camera/menu bar.
 public enum TrayLayout {
+    /// Ignore incomplete wake-up geometry and never push our own entry offscreen.
+    /// Both rectangles must belong to the same screen (checked by the caller).
+    public static func canCollapse(divider: CGRect, anchor: CGRect, screen: CGRect) -> Bool {
+        let frames = [divider, anchor, screen]
+        guard frames.allSatisfy({
+            $0.origin.x.isFinite && $0.origin.y.isFinite && $0.width.isFinite && $0.height.isFinite
+                && $0.width > 0 && $0.height > 0
+        }) else { return false }
+        return screen.intersects(divider) && screen.intersects(anchor) && divider.maxX <= anchor.minX + 1
+    }
+
     public static func frame(anchorX: CGFloat, screen: CGRect, visible: CGRect,
                              safeTop: CGFloat, size: CGSize) -> CGRect {
         let margin: CGFloat = 12

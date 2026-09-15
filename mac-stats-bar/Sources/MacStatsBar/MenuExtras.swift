@@ -109,11 +109,13 @@ final class TrayModel: ObservableObject {
     @Published private(set) var connected = UserDefaults.standard.bool(forKey: "trayConnectExtras")
     @Published var search = ""
     @Published var message: String?
-    @Published private(set) var organizerEnabled = false
-    @Published private(set) var isArranging = false
+    @Published private var collection = TrayCollectionState()
     @Published private(set) var originalsHidden = false
-    @Published private(set) var collectedIDs = Set<String>()
     var onOpenExtra: ((MenuExtra, String) -> Void)?
+
+    var organizerEnabled: Bool { collection.isEnabled }
+    var isArranging: Bool { collection.isArranging }
+    var collectedIDs: Set<String> { collection.collectedIDs }
 
     private let worker = DispatchQueue(label: "local.macstatsbar.menu-extras", qos: .userInitiated)
     private var generation = 0
@@ -122,7 +124,8 @@ final class TrayModel: ObservableObject {
     private var savedOrder = UserDefaults.standard.stringArray(forKey: "trayItemOrder") ?? []
     private var divider: NSStatusItem?
     private weak var anchor: NSStatusBarButton?
-    private var shouldCollapse = false
+    private var isSleeping = false
+    private var restorationTask: Task<Void, Never>?
 
     var collectedExtras: [MenuExtra] {
         organizerEnabled && !isArranging ? extras.filter { collectedIDs.contains($0.id) } : extras
@@ -223,8 +226,8 @@ final class TrayModel: ObservableObject {
     }
 
     func startOrganizing(anchor: NSStatusBarButton) {
-        shouldCollapse = false
-        isArranging = true
+        cancelRestoration()
+        collection.beginArrangement()
         revealOriginals()
         guard divider == nil else { return }
         self.anchor = anchor
@@ -234,7 +237,6 @@ final class TrayModel: ObservableObject {
         item.button?.toolTip = "按住 ⌘，把想收起的图标拖到这条线左侧"
         item.button?.setAccessibilityLabel("托盘收纳分隔线")
         divider = item
-        organizerEnabled = true
     }
 
     func finishOrganizing() {
@@ -249,35 +251,41 @@ final class TrayModel: ObservableObject {
                 self.message = "分隔线左侧还没有可收纳的图标。按住 ⌘ 拖入图标后，再点击完成。"
                 return
             }
-            self.shouldCollapse = true
-            self.collapseOriginals()
-            if self.originalsHidden {
-                self.collectedIDs = ids
-                self.isArranging = false
+            if self.collapseOriginals() {
+                self.collection.finishArrangement(collecting: ids)
                 self.search = ""
             }
         }
     }
 
     func toggleOriginals() {
-        if originalsHidden { shouldCollapse = false; revealOriginals() }
-        else { shouldCollapse = true; collapseOriginals() }
+        cancelRestoration()
+        collection.resume()
+        if originalsHidden {
+            collection.setCollapsed(false)
+            revealOriginals()
+        } else if collapseOriginals() {
+            collection.setCollapsed(true)
+        }
     }
 
-    private func collapseOriginals() {
+    @discardableResult
+    private func collapseOriginals(reportFailure: Bool = true) -> Bool {
+        if originalsHidden { return true }
         guard let divider, let dividerWindow = divider.button?.window,
-              let anchorWindow = anchor?.window, dividerWindow.screen == anchorWindow.screen,
-              dividerWindow.frame.maxX <= anchorWindow.frame.minX + 1 else {
-            shouldCollapse = false
-            message = "请按住 ⌘，把分隔线放到托盘箭头左侧，再收起图标。"
-            return
+              let anchorWindow = anchor?.window, let screen = anchorWindow.screen,
+              dividerWindow.screen == screen,
+              TrayLayout.canCollapse(divider: dividerWindow.frame, anchor: anchorWindow.frame, screen: screen.frame) else {
+            if reportFailure { message = "请按住 ⌘，把分隔线放到托盘箭头左侧，再收起图标。" }
+            return false
         }
         divider.button?.title = ""
         divider.length = 10_000
         originalsHidden = true
+        return true
     }
 
-    func revealOriginals() {
+    private func revealOriginals() {
         divider?.length = 18
         divider?.button?.title = "│"
         originalsHidden = false
@@ -285,17 +293,67 @@ final class TrayModel: ObservableObject {
 
     func didDismiss() {
         cancelScan()
-        if shouldCollapse, !originalsHidden { collapseOriginals() }
+        if collection.shouldCollapse, !originalsHidden { collapseOriginals() }
+    }
+
+    func revealForMenu() {
+        // A pending wake-up retry must not collapse underneath a foreign menu.
+        cancelRestoration()
+        collection.resume()
+        revealOriginals()
+    }
+
+    func prepareForSleep() {
+        isSleeping = true
+        cancelRestoration()
+        cancelScan()
+        collection.suspend()
+        revealOriginals()
+    }
+
+    func resumeAfterWake() {
+        isSleeping = false
+        restoreAfterScreenChange()
+    }
+
+    func restoreAfterScreenChange() {
+        cancelRestoration()
+        cancelScan()
+        guard organizerEnabled else { return }
+        collection.suspend()
+        // Keep the same NSStatusItem: removing it loses the user's boundary.
+        revealOriginals()
+        guard !isSleeping else { return }
+        restorationTask = Task { @MainActor [weak self] in
+            // Screen notifications can precede menu-bar layout. Coalesce them
+            // and retry for at most 8.75 s, with no permanent polling or AX scan.
+            for delay in [750, 500, 1_000, 2_000, 4_000] {
+                do { try await Task.sleep(nanoseconds: UInt64(delay) * 1_000_000) }
+                catch { return }
+                guard let self, !Task.isCancelled, self.organizerEnabled, !self.isSleeping else { return }
+                if !self.collection.prefersCollapsed || self.collapseOriginals(reportFailure: false) {
+                    self.collection.resume()
+                    self.restorationTask = nil
+                    return
+                }
+            }
+            guard let self, !Task.isCancelled else { return }
+            self.restorationTask = nil
+            self.message = "收纳范围已保留。菜单栏位置尚未恢复，可从更多菜单收起图标，或点击「重新整理」。"
+        }
+    }
+
+    private func cancelRestoration() {
+        restorationTask?.cancel()
+        restorationTask = nil
     }
 
     func stopOrganizing() {
-        shouldCollapse = false
+        cancelRestoration()
+        collection.stop()
         revealOriginals()
         if let divider { NSStatusBar.system.removeStatusItem(divider) }
         divider = nil
-        organizerEnabled = false
-        isArranging = false
-        collectedIDs = []
     }
 
     func shutdown() {
