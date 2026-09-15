@@ -1,0 +1,104 @@
+{
+  "appBundle": "Mac Stats Bar Preview.app",
+  "measuredAt": "2026-09-15T04:21:48.446763+00:00",
+  "scenario": "panel closed; system every 5 s; quota every 300 s",
+  "durationSeconds": 30.744,
+  "averageAppCPUPercentOfOneCore": 0.293,
+  "appRssMinMiB": 26.984,
+  "appRssMaxMiB": 27.172,
+  "maximumChildCount": 0,
+  "observedChildPeakRssMiB": 0.0,
+  "samples": [
+    {
+      "elapsedSeconds": 0.033,
+      "appRssMiB": 26.984,
+      "appCPUSeconds": 0.29,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 2.594,
+      "appRssMiB": 26.984,
+      "appCPUSeconds": 0.29,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 5.16,
+      "appRssMiB": 27.031,
+      "appCPUSeconds": 0.31,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 7.715,
+      "appRssMiB": 27.031,
+      "appCPUSeconds": 0.31,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 10.279,
+      "appRssMiB": 27.078,
+      "appCPUSeconds": 0.32,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 12.843,
+      "appRssMiB": 27.078,
+      "appCPUSeconds": 0.32,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 15.4,
+      "appRssMiB": 27.062,
+      "appCPUSeconds": 0.33,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 17.963,
+      "appRssMiB": 27.062,
+      "appCPUSeconds": 0.33,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 20.527,
+      "appRssMiB": 27.078,
+      "appCPUSeconds": 0.34,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 23.089,
+      "appRssMiB": 27.078,
+      "appCPUSeconds": 0.34,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 25.647,
+      "appRssMiB": 27.172,
+      "appCPUSeconds": 0.35,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 28.211,
+      "appRssMiB": 27.172,
+      "appCPUSeconds": 0.35,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 30.777,
+      "appRssMiB": 27.156,
+      "appCPUSeconds": 0.38,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    }
+  ]
+}

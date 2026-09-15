@@ -1,0 +1,135 @@
+{
+  "measuredAt": "2026-09-15T03:36:50.138893+00:00",
+  "scenario": "one-shot native diagnostic + Codex usage read",
+  "durationSeconds": 2.248,
+  "averageAppCPUPercentOfOneCore": 0.445,
+  "appRssMinMiB": 2.25,
+  "appRssMaxMiB": 8.125,
+  "maximumChildCount": 1,
+  "observedChildPeakRssMiB": 76.391,
+  "samples": [
+    {
+      "elapsedSeconds": 0.036,
+      "appRssMiB": 2.25,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 0.181,
+      "appRssMiB": 6.203,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 0.321,
+      "appRssMiB": 6.203,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 0.46,
+      "appRssMiB": 6.203,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 0.596,
+      "appRssMiB": 6.203,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 0.737,
+      "appRssMiB": 6.203,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 0.878,
+      "appRssMiB": 6.203,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 1.017,
+      "appRssMiB": 6.203,
+      "appCPUSeconds": 0.01,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 1.155,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 72.0
+    },
+    {
+      "elapsedSeconds": 1.296,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 72.0
+    },
+    {
+      "elapsedSeconds": 1.436,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 73.938
+    },
+    {
+      "elapsedSeconds": 1.578,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 73.984
+    },
+    {
+      "elapsedSeconds": 1.715,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 73.984
+    },
+    {
+      "elapsedSeconds": 1.855,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 73.984
+    },
+    {
+      "elapsedSeconds": 1.998,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 73.984
+    },
+    {
+      "elapsedSeconds": 2.144,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 74.969
+    },
+    {
+      "elapsedSeconds": 2.284,
+      "appRssMiB": 8.125,
+      "appCPUSeconds": 0.02,
+      "childCount": 1,
+      "childRssMiB": 76.391
+    }
+  ],
+  "diagnostic": {
+    "codexReadSucceeded": true
+  },
+  "privacyNote": "Public copy: account quota, reset-card details and system diagnostic readings removed; original CPU/RSS performance samples are unchanged."
+}

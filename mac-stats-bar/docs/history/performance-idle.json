@@ -1,0 +1,103 @@
+{
+  "measuredAt": "2026-09-15T03:35:05.332507+00:00",
+  "scenario": "panel closed; system every 5 s; quota every 300 s",
+  "durationSeconds": 30.632,
+  "averageAppCPUPercentOfOneCore": 0.131,
+  "appRssMinMiB": 70.453,
+  "appRssMaxMiB": 70.516,
+  "maximumChildCount": 0,
+  "observedChildPeakRssMiB": 0.0,
+  "samples": [
+    {
+      "elapsedSeconds": 0.034,
+      "appRssMiB": 70.453,
+      "appCPUSeconds": 0.77,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 2.586,
+      "appRssMiB": 70.453,
+      "appCPUSeconds": 0.77,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 5.129,
+      "appRssMiB": 70.469,
+      "appCPUSeconds": 0.77,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 7.687,
+      "appRssMiB": 70.469,
+      "appCPUSeconds": 0.77,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 10.232,
+      "appRssMiB": 70.469,
+      "appCPUSeconds": 0.78,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 12.775,
+      "appRssMiB": 70.469,
+      "appCPUSeconds": 0.78,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 15.328,
+      "appRssMiB": 70.516,
+      "appCPUSeconds": 0.79,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 17.887,
+      "appRssMiB": 70.516,
+      "appCPUSeconds": 0.79,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 20.437,
+      "appRssMiB": 70.484,
+      "appCPUSeconds": 0.8,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 22.997,
+      "appRssMiB": 70.453,
+      "appCPUSeconds": 0.81,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 25.553,
+      "appRssMiB": 70.453,
+      "appCPUSeconds": 0.81,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 28.106,
+      "appRssMiB": 70.5,
+      "appCPUSeconds": 0.81,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    },
+    {
+      "elapsedSeconds": 30.666,
+      "appRssMiB": 70.5,
+      "appCPUSeconds": 0.81,
+      "childCount": 0,
+      "childRssMiB": 0.0
+    }
+  ]
+}

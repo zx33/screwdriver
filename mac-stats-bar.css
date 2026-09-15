@@ -1,0 +1,149 @@
+.stats-guide {
+  max-width: 1180px;
+}
+
+.stats-guide .eyebrow {
+  color: var(--green);
+}
+
+.stats-mark {
+  background: linear-gradient(145deg, #53b699, #218467);
+  box-shadow: 0 9px 20px rgba(24, 135, 91, 0.18);
+  font-size: 32px;
+}
+
+.stats-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.stats-content {
+  display: grid;
+  min-width: 0;
+  gap: 24px;
+}
+
+.stats-card {
+  padding: 32px;
+}
+
+.stats-card h2 {
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+#stats-title {
+  font-size: clamp(27px, 3.4vw, 40px);
+}
+
+.stats-card p,
+.stats-card li {
+  color: #5d6a82;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.stats-card .stats-lead {
+  font-size: 16px;
+}
+
+.stats-features {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stats-features strong,
+.stats-features span {
+  display: block;
+}
+
+.stats-features strong {
+  color: var(--ink);
+}
+
+.stats-card pre {
+  overflow-x: auto;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.stats-card details {
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.stats-card summary {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.stats-card details p,
+.stats-card details ol {
+  margin: 12px 0 0;
+}
+
+.stats-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 8px 0 0;
+}
+
+.stats-links a {
+  color: var(--blue-dark);
+  text-underline-offset: 3px;
+}
+
+.stats-preview {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.stats-preview img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.stats-preview figcaption {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.stats-footer {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 760px) {
+  .stats-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stats-card {
+    padding: 24px;
+  }
+
+  .stats-preview {
+    max-width: 460px;
+    justify-self: center;
+  }
+}

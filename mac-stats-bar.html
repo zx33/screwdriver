@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7fb" />
+    <title>Mac Stats Bar · Screwdriver</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="mac-stats-bar.css" />
+  </head>
+  <body>
+    <div class="app-shell stats-guide">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark stats-mark" aria-hidden="true">⌄</div>
+          <div>
+            <p class="eyebrow">SCREWDRIVER · MAC UTILITY</p>
+            <h1>Mac Stats Bar</h1>
+          </div>
+        </div>
+        <nav class="topbar-actions" aria-label="工具切换">
+          <a class="button button-quiet" href="index.html">Markdown 对比</a>
+          <a class="button button-quiet" href="md-to-docx.html">MD 转 Word</a>
+        </nav>
+      </header>
+
+      <main class="stats-layout">
+        <div class="stats-content">
+          <section class="panel stats-card" aria-labelledby="stats-title">
+            <p class="eyebrow">MACOS 13+ · NATIVE APP</p>
+            <h2 id="stats-title">菜单栏有点挤？<br />给它装个小抽屉。</h2>
+            <p class="stats-lead">CPU 忙不忙、内存用了多少、Codex 还能工作多久，一眼掌握。点开小箭头，把常用状态和收纳的应用放到刘海下方。</p>
+            <ul class="stats-features">
+              <li><strong>系统状态</strong><span>CPU、内存、网络、磁盘、电池与散热状态。</span></li>
+              <li><strong>Codex 额度</strong><span>余量、恢复时间、倒计时和重置卡数量。</span></li>
+              <li><strong>展开托盘 · 预览</strong><span>授权辅助功能后，收纳并打开其他应用的菜单栏图标。</span></li>
+            </ul>
+            <a class="button button-primary" href="#get-started">在 Mac 上使用</a>
+          </section>
+
+          <section class="panel stats-card" id="get-started" aria-labelledby="start-title">
+            <p class="eyebrow">GET STARTED</p>
+            <h2 id="start-title">构建一次，放进菜单栏</h2>
+            <p>需要 macOS 13 或更新版本，以及 Apple Command Line Tools。在螺丝刀仓库根目录运行：</p>
+            <pre><code>./mac-stats-bar/scripts/build.sh
+open "mac-stats-bar/dist/Mac Stats Bar Preview.app"</code></pre>
+            <p>点击菜单栏小箭头打开托盘，右键进入系统与额度详情。Codex 额度需要本机安装 Codex 并登录 ChatGPT 账户；重置卡当前仅展示。</p>
+            <details>
+              <summary>怎样收纳被刘海挡住的图标？</summary>
+              <ol>
+                <li>在托盘中点击「连接菜单栏应用」，按提示授权辅助功能。</li>
+                <li>点击「整理菜单栏」，按住 ⌘ 把想隐藏的图标拖到分隔线左侧，保持小箭头在线右侧。</li>
+                <li>点击「完成并收起」。之后点小箭头，即可打开收纳项。</li>
+              </ol>
+              <p>退出应用、休眠或屏幕布局变化会恢复原图标。托盘使用应用图标，菜单由原应用打开；不同应用的支持情况会有差异。</p>
+            </details>
+            <details>
+              <summary>辅助功能已开启，为什么仍提示未授权？</summary>
+              <p>默认本机构建使用临时签名，更新或更换应用位置后可能需要重新授权。退出应用，在系统设置的「隐私与安全性 → 辅助功能」中移除旧条目，再添加当前构建并开启权限。</p>
+            </details>
+            <p class="stats-links"><a href="mac-stats-bar/README.md">完整使用说明</a><a href="mac-stats-bar/docs/integration.md">迁入与验证记录</a></p>
+          </section>
+        </div>
+
+        <figure class="panel stats-preview">
+          <img src="screenshots/mac-stats-bar.jpg" alt="Mac Stats Bar 原生面板，全部为虚构演示数据：系统状态、Codex 余量、恢复时间和重置卡数量。" width="776" height="1320" />
+          <figcaption>原生界面 · 全部为虚构演示数据<br />用于展示功能，不代表个人账户状态。</figcaption>
+        </figure>
+      </main>
+
+      <footer class="footer stats-footer">
+        <span>🪛 Screwdriver · 一把工具，解决一个小麻烦。</span>
+        <span>系统状态留在本机；额度经本机 Codex 向 OpenAI 查询。</span>
+      </footer>
+    </div>
+  </body>
+</html>

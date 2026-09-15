@@ -7,11 +7,16 @@
 .idea/
 .vscode/
 
-# Dependency and build output directories if a future tool needs them
+# Dependency and build output directories
 node_modules/
 dist/
 build/
 coverage/
+.build/
+.swiftpm/
+*.xcuserstate
+__pycache__/
+*.pyc
 
 # Local preview artifacts
 *.log

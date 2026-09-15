@@ -73,6 +73,8 @@ button {
 
 .topbar {
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
   padding: 2px 4px 28px;
 }
 
@@ -132,6 +134,7 @@ h3 {
 }
 
 .topbar-actions {
+  flex-wrap: wrap;
   gap: 8px;
 }
 

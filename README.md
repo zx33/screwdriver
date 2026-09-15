@@ -37,11 +37,42 @@
 
 > 第一版只输出现代 `.docx`。老式二进制 `.doc` 不只是换个后缀，因此暂时不做“假装支持”。图片目前会保留为文字说明。
 
+### Mac Stats Bar
+
+给 Mac 菜单栏装一个小抽屉：系统忙不忙、Codex 还剩多少额度，抬眼就知道。
+
+<img src="screenshots/mac-stats-bar.jpg" alt="Mac Stats Bar 系统状态与 Codex 额度面板，全部为虚构演示数据" width="390" />
+
+截图使用虚构演示数据，不展示个人账户的真实额度。
+
+- 原生 macOS 应用：Swift / AppKit / SwiftUI，无第三方包，不占 Dock 位置
+- 系统状态：CPU、内存、网络上下行、磁盘、电池和散热状态
+- Codex 额度：各额度组余量、恢复时间、倒计时和重置卡数量
+- 展开托盘：小箭头展开刘海下方的面板；授权辅助功能后，可收纳与打开其他应用的菜单栏图标
+- 按需刷新：系统默认 5 秒、额度默认 5 分钟；支持手动同步、暂停和可选登录启动
+
+需要 **macOS 13+** 和 Apple Command Line Tools。Codex 额度另外需要本机安装 Codex 并登录；重置卡目前仅展示。
+
+[打开工具说明](mac-stats-bar.html) · [构建与使用](mac-stats-bar/README.md) · [迁入与验证记录](mac-stats-bar/docs/integration.md)
+
+> 托盘仍是预览功能：使用应用图标和应用原有菜单，不同应用的支持情况会有差异。先给拥挤的菜单栏腾个位置。😈
+
 ## 使用
 
-直接打开 [`index.html`](index.html) 使用 Markdown 对比，或打开 [`md-to-docx.html`](md-to-docx.html) 使用 Markdown → Word；也可以在当前目录启动任意静态文件服务器。
+| 工具 | 打开方式 |
+| --- | --- |
+| Markdown Review | 直接打开 [`index.html`](index.html) |
+| Markdown → Word | 直接打开 [`md-to-docx.html`](md-to-docx.html) |
+| Mac Stats Bar | 在 macOS 构建并打开下面的应用包 |
 
-所有处理都在浏览器本地完成，不会把文档上传到服务器。这个工具箱目前是纯前端、零依赖，拿来即用。
+在仓库根目录运行：
+
+```sh
+./mac-stats-bar/scripts/build.sh
+open "mac-stats-bar/dist/Mac Stats Bar Preview.app"
+```
+
+两个文档工具是纯前端、零依赖，处理过程都在当前浏览器中完成，也可以通过本地静态文件服务器打开。Mac Stats Bar 是独立原生应用；网页中的入口提供说明，实际状态显示在 macOS 菜单栏里。
 
 ## 设计口味
 
@@ -52,7 +83,12 @@
 
 ## 开发
 
-仓库当前没有构建步骤。修改 HTML、CSS 或对应的 JavaScript 后，刷新浏览器即可检查效果。
+文档工具修改 HTML、CSS 或 JavaScript 后，刷新浏览器即可检查效果。Mac Stats Bar 的源码、构建和测试集中在 `mac-stats-bar/`，构建缓存与应用包不会进入版本控制。
+
+```sh
+node --test tests/docx-engine.test.js
+./mac-stats-bar/scripts/test.sh
+```
 
 ```text
 screwdriver/
@@ -63,14 +99,27 @@ screwdriver/
 ├── md-to-docx.html
 ├── md-to-docx.js
 ├── docx-engine.js
+├── mac-stats-bar.html
+├── mac-stats-bar/
+│   ├── README.md
+│   ├── Package.swift
+│   ├── Sources/
+│   ├── Tests/
+│   ├── Resources/
+│   ├── scripts/
+│   └── docs/
 └── screenshots/
     ├── markdown-review.jpg
-    └── md-to-docx.jpg
+    ├── md-to-docx.jpg
+    └── mac-stats-bar.jpg
 ```
 
 ## 隐私说明
 
-仓库源码与截图不包含 API key、密码、私钥或个人文件内容。使用时，文档内容只在当前浏览器中处理；发布前也建议继续避免把真实敏感文档放进示例数据或截图。
+- 文档工具只在当前浏览器中处理内容，不上传文档。
+- Mac Stats Bar 的系统状态在本机采集；额度查询经本机 Codex 连接 OpenAI，复用已有登录状态，不读取或保存认证文件，不创建任务、不调用模型。
+- 菜单栏收纳需要用户主动连接并授权辅助功能；无需录屏权限。
+- Mac Stats Bar 截图使用虚构演示数据；历史记录保留资源采样，账户读数已移除。源码与截图不包含 API key、密码、私钥或个人文档内容。详见 [发布隐私检查](mac-stats-bar/docs/privacy-review.md)。
 
 ## License
 
