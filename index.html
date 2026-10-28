@@ -4,153 +4,96 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f7fb" />
-    <title>Markdown Review · Screwdriver</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Screwdriver 本地工具箱：Markdown 对比、Markdown 转 Word 与 Mac 菜单栏工具。" />
+    <title>Screwdriver · 本地工具箱</title>
+    <link rel="stylesheet" href="assets/base.css" />
+    <link rel="stylesheet" href="assets/toolbox.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <div class="app-shell toolbox-shell">
       <header class="topbar">
         <div class="brand-block">
-          <div class="brand-mark" aria-hidden="true">M<span>Δ</span></div>
+          <div class="brand-mark toolbox-mark" aria-hidden="true">🪛</div>
           <div>
-            <p class="eyebrow">DOCUMENT REVIEW</p>
-            <h1>Markdown Review</h1>
+            <p class="eyebrow">LOCAL TOOLS</p>
+            <h1>Screwdriver</h1>
           </div>
         </div>
-        <nav class="topbar-actions" aria-label="工具切换">
-          <a class="button button-quiet" href="md-to-docx.html">MD 转 Word</a>
-          <a class="button button-quiet" href="mac-stats-bar.html">Mac 状态栏</a>
-          <button class="button button-quiet" id="load-example" type="button">载入示例</button>
-          <button class="button button-quiet" id="clear-all" type="button">清空</button>
+        <nav class="topbar-actions" aria-label="工具箱导航">
+          <a class="button button-quiet" href="README.md">项目说明</a>
         </nav>
       </header>
 
       <main>
-        <section class="input-section panel" aria-labelledby="input-title">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">COMPARE TWO DOCUMENTS</p>
-              <h2 id="input-title">选择要对比的 Markdown 版本</h2>
-            </div>
-            <p class="helper-text">内容只在当前浏览器中处理，不会上传。</p>
-          </div>
-
-          <div class="input-grid">
-            <article class="editor-card editor-card-old">
-              <div class="editor-card-heading">
-                <div>
-                  <span class="version-dot version-dot-old"></span>
-                  <span class="card-label">基准版本</span>
-                  <span class="card-caption">修改前</span>
-                </div>
-                <span class="char-count" id="old-count">0 字符</span>
-              </div>
-              <textarea id="old-input" spellcheck="false" placeholder="粘贴修改前的 Markdown…"></textarea>
-            </article>
-
-            <article class="editor-card editor-card-new">
-              <div class="editor-card-heading">
-                <div>
-                  <span class="version-dot version-dot-new"></span>
-                  <span class="card-label">目标版本</span>
-                  <span class="card-caption">修改后</span>
-                </div>
-                <span class="char-count" id="new-count">0 字符</span>
-              </div>
-              <textarea id="new-input" spellcheck="false" placeholder="粘贴修改后的 Markdown…"></textarea>
-            </article>
-          </div>
-
-          <div class="control-bar">
-            <div class="control-group">
-              <span class="control-label">显示</span>
-              <div class="segmented" role="group" aria-label="显示模式">
-                <button class="segment is-active" data-view-mode="inline" type="button">修订视图</button>
-                <button class="segment" data-view-mode="side-by-side" type="button">源码并排</button>
-              </div>
-            </div>
-            <div class="control-group">
-              <span class="control-label">粒度</span>
-              <div class="segmented" role="group" aria-label="差异粒度">
-                <button class="segment is-active" data-granularity="word" type="button">Word</button>
-                <button class="segment" data-granularity="char" type="button">Char</button>
-              </div>
-            </div>
-            <div class="control-spacer"></div>
-            <span class="compare-status" id="compare-status">等待输入</span>
-            <button class="button button-primary" id="compare-button" type="button">
-              <span class="button-icon" aria-hidden="true">↗</span>
-              重新比较
-            </button>
-          </div>
+        <section class="toolbox-intro" aria-labelledby="toolbox-title">
+          <p class="eyebrow">一把工具，解决一个小麻烦</p>
+          <h2 id="toolbox-title">今天，拧哪颗螺丝？</h2>
+          <p>对一遍修改，转一份文档，或给 Mac 菜单栏腾点空间。<br />选好工具，就可以开始。</p>
         </section>
 
-        <section class="summary-section" aria-labelledby="summary-title">
-          <div class="summary-heading">
-            <div>
-              <p class="eyebrow">CHANGE SUMMARY</p>
-              <h2 id="summary-title">修改概览</h2>
+        <section class="tool-grid" aria-label="工具目录">
+          <article class="panel tool-card" aria-labelledby="review-title">
+            <div class="tool-card-heading">
+              <span class="tool-symbol" aria-hidden="true">MΔ</span>
+              <span class="tool-platform">浏览器工具</span>
             </div>
-            <span class="summary-note" id="summary-note">尚未开始比较</span>
-          </div>
-          <div class="summary-grid">
-            <article class="stat-card stat-card-added">
-              <span class="stat-label" id="added-label">新增词</span>
-              <strong class="stat-value" id="added-value">—</strong>
-              <span class="stat-subtitle">目标版本中出现</span>
-            </article>
-            <article class="stat-card stat-card-removed">
-              <span class="stat-label" id="removed-label">删除词</span>
-              <strong class="stat-value" id="removed-value">—</strong>
-              <span class="stat-subtitle">基准版本中存在</span>
-            </article>
-            <article class="stat-card stat-card-lines">
-              <span class="stat-label">修改行</span>
-              <strong class="stat-value" id="changed-lines-value">—</strong>
-              <span class="stat-subtitle" id="line-summary">新增 0 · 删除 0</span>
-            </article>
-            <article class="stat-card stat-card-hunks">
-              <span class="stat-label">修改区域</span>
-              <strong class="stat-value" id="hunks-value">—</strong>
-              <span class="stat-subtitle">连续变化的区段</span>
-            </article>
-          </div>
+            <h3 id="review-title">Markdown Review</h3>
+            <p>把两份 Markdown 放在一起，看清每一处修改。</p>
+            <ul>
+              <li>行内修订与源码并排</li>
+              <li>按词或按字符查看差异</li>
+              <li>修改统计与逐处跳转</li>
+            </ul>
+            <div class="tool-card-actions">
+              <a class="button button-primary" href="tools/markdown-review/index.html">开始对比 <span aria-hidden="true">↗</span></a>
+              <a class="tool-docs" href="tools/markdown-review/README.md" aria-label="Markdown Review 使用说明">使用说明</a>
+            </div>
+          </article>
+
+          <article class="panel tool-card tool-card-docx" aria-labelledby="docx-title">
+            <div class="tool-card-heading">
+              <span class="tool-symbol" aria-hidden="true">MW</span>
+              <span class="tool-platform">浏览器工具</span>
+            </div>
+            <h3 id="docx-title">Markdown → Word</h3>
+            <p>粘贴或拖入 Markdown，生成能继续编辑的 Word 文档。</p>
+            <ul>
+              <li>保留标题、列表和表格</li>
+              <li>即时排版预览</li>
+              <li>在浏览器本地导出 .docx</li>
+            </ul>
+            <div class="tool-card-actions">
+              <a class="button button-primary" href="tools/md-to-docx/index.html">转换文档 <span aria-hidden="true">↗</span></a>
+              <a class="tool-docs" href="tools/md-to-docx/README.md" aria-label="Markdown 转 Word 使用说明">使用说明</a>
+            </div>
+          </article>
+
+          <article class="panel tool-card tool-card-mac" aria-labelledby="mac-title">
+            <div class="tool-card-heading">
+              <span class="tool-symbol" aria-hidden="true">⌄</span>
+              <span class="tool-platform">macOS 13+ · 原生应用</span>
+            </div>
+            <h3 id="mac-title">Mac Stats Bar</h3>
+            <p>在 Mac 菜单栏里，查看系统状态与 Codex 剩余额度。</p>
+            <ul>
+              <li>CPU、内存、网络等系统指标</li>
+              <li>Codex 额度与恢复时间</li>
+              <li>菜单栏图标收纳预览</li>
+            </ul>
+            <div class="tool-card-actions">
+              <a class="button button-primary" href="tools/mac-stats-bar/index.html">查看工具 <span aria-hidden="true">↗</span></a>
+              <a class="tool-docs" href="tools/mac-stats-bar/README.md" aria-label="Mac Stats Bar 构建与使用">构建与使用</a>
+            </div>
+          </article>
         </section>
 
-        <section class="diff-section panel" aria-labelledby="diff-title">
-          <div class="diff-heading">
-            <div>
-              <p class="eyebrow">REVIEW CHANGES</p>
-              <h2 id="diff-title">修改预览</h2>
-            </div>
-            <div class="diff-navigation">
-              <span id="change-position">0 / 0</span>
-              <button class="icon-button" id="previous-change" type="button" aria-label="上一个修改">↑</button>
-              <button class="icon-button" id="next-change" type="button" aria-label="下一个修改">↓</button>
-            </div>
-          </div>
-          <div class="legend" aria-label="颜色说明">
-            <span class="legend-item legend-item-add"><i class="legend-swatch legend-add"></i>新增</span>
-            <span class="legend-item legend-item-remove"><i class="legend-swatch legend-remove"></i>删除</span>
-            <span class="legend-item legend-item-context"><i class="legend-swatch legend-context"></i>未修改</span>
-          </div>
-          <div id="diff-root" class="diff-root">
-            <div class="empty-state">
-              <div class="empty-icon" aria-hidden="true">Δ</div>
-              <h3>输入两份 Markdown 开始比较</h3>
-              <p>修改会以 Overleaf 风格的颜色和删除线标出。</p>
-            </div>
-          </div>
-        </section>
+        <p class="toolbox-note">文档工具可直接在浏览器中使用，内容留在本地。Mac Stats Bar 需要在 Mac 上构建并运行。</p>
       </main>
 
       <footer class="footer">
-        <span>Markdown Review · local-first</span>
-        <span>支持中文字符级 diff</span>
+        <span>🪛 Screwdriver · 小工具，顺手用。</span>
+        <a href="LICENSE">MIT License</a>
       </footer>
     </div>
-
-    <script src="diff-engine.js"></script>
-    <script src="app.js"></script>
   </body>
 </html>

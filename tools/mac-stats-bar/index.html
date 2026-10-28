@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f7fb" />
     <title>Mac Stats Bar · Screwdriver</title>
+    <link rel="stylesheet" href="../../assets/base.css" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="mac-stats-bar.css" />
   </head>
   <body>
     <div class="app-shell stats-guide">
@@ -19,8 +19,9 @@
           </div>
         </div>
         <nav class="topbar-actions" aria-label="工具切换">
-          <a class="button button-quiet" href="index.html">Markdown 对比</a>
-          <a class="button button-quiet" href="md-to-docx.html">MD 转 Word</a>
+          <a class="button button-quiet" href="../../index.html">← 工具箱</a>
+          <a class="button button-quiet" href="../markdown-review/index.html">Markdown 对比</a>
+          <a class="button button-quiet" href="../md-to-docx/index.html">MD 转 Word</a>
         </nav>
       </header>
 
@@ -42,8 +43,8 @@
             <p class="eyebrow">GET STARTED</p>
             <h2 id="start-title">构建一次，放进菜单栏</h2>
             <p>需要 macOS 13 或更新版本，以及 Apple Command Line Tools。在螺丝刀仓库根目录运行：</p>
-            <pre><code>./mac-stats-bar/scripts/build.sh
-open "mac-stats-bar/dist/Mac Stats Bar Preview.app"</code></pre>
+            <pre><code>./tools/mac-stats-bar/scripts/build.sh
+open "tools/mac-stats-bar/dist/Mac Stats Bar Preview.app"</code></pre>
             <p>点击菜单栏小箭头打开托盘，右键进入系统与额度详情。Codex 额度需要本机安装 Codex 并登录 ChatGPT 账户；重置卡当前仅展示。</p>
             <details>
               <summary>怎样收纳被刘海挡住的图标？</summary>
@@ -52,18 +53,18 @@ open "mac-stats-bar/dist/Mac Stats Bar Preview.app"</code></pre>
                 <li>点击「整理菜单栏」，按住 ⌘ 把想隐藏的图标拖到分隔线左侧，保持小箭头在线右侧。</li>
                 <li>点击「完成并收起」。之后点小箭头，即可打开收纳项。</li>
               </ol>
-              <p>退出应用、休眠或屏幕布局变化会恢复原图标。托盘使用应用图标，菜单由原应用打开；不同应用的支持情况会有差异。</p>
+              <p>休眠或屏幕布局变化后会保留收纳范围，并尝试恢复收起状态；退出应用会恢复原图标。托盘使用应用图标，菜单由原应用打开；不同应用的支持情况会有差异。</p>
             </details>
             <details>
               <summary>辅助功能已开启，为什么仍提示未授权？</summary>
               <p>默认本机构建使用临时签名，更新或更换应用位置后可能需要重新授权。退出应用，在系统设置的「隐私与安全性 → 辅助功能」中移除旧条目，再添加当前构建并开启权限。</p>
             </details>
-            <p class="stats-links"><a href="mac-stats-bar/README.md">完整使用说明</a><a href="mac-stats-bar/docs/integration.md">迁入与验证记录</a></p>
+            <p class="stats-links"><a href="README.md">完整使用说明</a><a href="docs/development.md">开发说明</a></p>
           </section>
         </div>
 
         <figure class="panel stats-preview">
-          <img src="screenshots/mac-stats-bar.jpg" alt="Mac Stats Bar 原生面板，全部为虚构演示数据：系统状态、Codex 余量、恢复时间和重置卡数量。" width="776" height="1320" />
+          <img src="screenshot.jpg" alt="Mac Stats Bar 原生面板，全部为虚构演示数据：系统状态、Codex 余量、恢复时间和重置卡数量。" width="776" height="1320" />
           <figcaption>原生界面 · 全部为虚构演示数据<br />用于展示功能，不代表个人账户状态。</figcaption>
         </figure>
       </main>

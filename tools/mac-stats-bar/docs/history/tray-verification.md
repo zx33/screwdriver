@@ -1,6 +1,6 @@
 # 收纳托盘预览验证
 
-本文记录迁入前的独立 `mac_stats_bar` 仓库；下文中的分支、路径和操作均属于当时环境。本次迁入结果见 [integration.md](../integration.md)。
+本文记录迁入前的独立 `mac_stats_bar` 仓库；下文中的分支、路径和操作均属于当时环境。本次迁入结果见 [integration.md](integration.md)。
 
 日期：2026-09-15。分支：`feature/expandable-tray`。基线：`main` / `57f8079`。
 

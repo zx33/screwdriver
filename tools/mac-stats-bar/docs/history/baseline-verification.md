@@ -1,6 +1,6 @@
 # 初版历史验证记录
 
-本文来自迁入前的独立 `mac_stats_bar` 仓库，描述 `57f8079` 初版，保留作为历史证据。本次迁入结果见 [integration.md](../integration.md)。
+本文来自迁入前的独立 `mac_stats_bar` 仓库，描述 `57f8079` 初版，保留作为历史证据。本次迁入结果见 [integration.md](integration.md)。
 
 验证日期：2026-09-15。环境：macOS 15.1.1、Apple Silicon、14 核、48 GB 内存；Apple Swift 6.0.3。
 
