@@ -23,7 +23,7 @@
 
 ### mdcat
 
-需要 Go 1.27.3 或更新版本来构建；生成的独立可执行文件约 7 MB。在仓库根目录运行：
+可以从 [GitHub Release](https://github.com/zx33/screwdriver/releases/tag/mdcat-v0.1.0) 直接下载约 7 MB 的独立可执行文件。自行构建需要 Go 1.27.3 或更新版本，在仓库根目录运行：
 
 ```sh
 ./tools/mdcat/scripts/build.sh

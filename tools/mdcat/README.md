@@ -6,25 +6,28 @@
 
 ## 独立可执行文件
 
-按系统和 CPU 选择 `dist/` 中对应的文件：
+从 [GitHub Release](https://github.com/zx33/screwdriver/releases/tag/mdcat-v0.1.0) 按系统和 CPU 下载对应的单文件：
 
 | 平台 | 文件 |
 | --- | --- |
-| Apple Silicon Mac | `mdcat-macos-arm64` |
-| Intel Mac | `mdcat-macos-x64` |
-| Linux x86-64 | `mdcat-linux-x64` |
-| Linux ARM64 | `mdcat-linux-arm64` |
+| Apple Silicon Mac | [mdcat-macos-arm64](https://github.com/zx33/screwdriver/releases/download/mdcat-v0.1.0/mdcat-macos-arm64) |
+| Intel Mac | [mdcat-macos-x64](https://github.com/zx33/screwdriver/releases/download/mdcat-v0.1.0/mdcat-macos-x64) |
+| Linux x86-64 | [mdcat-linux-x64](https://github.com/zx33/screwdriver/releases/download/mdcat-v0.1.0/mdcat-linux-x64) |
+| Linux ARM64 | [mdcat-linux-arm64](https://github.com/zx33/screwdriver/releases/download/mdcat-v0.1.0/mdcat-linux-arm64) |
 
 每个文件约 7 MB。Linux 版本为静态链接文件。
 
-例如，在仓库根目录使用 Apple Silicon 版：
+macOS 文件未使用 Apple Developer ID 签名或公证，下载后系统可能提示无法验证开发者。参见 [Apple 关于安全打开 Mac 软件的说明](https://support.apple.com/zh-cn/102445)。
+
+例如，下载 Apple Silicon 版后，在文件所在目录运行：
 
 ```bash
-./tools/mdcat/dist/mdcat-macos-arm64 README.md
-./tools/mdcat/dist/mdcat-macos-arm64 --browser README.md
+chmod +x mdcat-macos-arm64
+./mdcat-macos-arm64 /path/to/document.md
+./mdcat-macos-arm64 --browser /path/to/document.md
 ```
 
-单个文件可以复制到其他位置，或改名为 `mdcat` 后放进 `PATH` 中。`dist/` 是本地构建产物，不随源码仓库提交；如果目录不存在，请按文末说明构建。
+单个文件可以复制到其他位置，或改名为 `mdcat` 后放进 `PATH` 中。源码仓库中的 `dist/` 是本地构建产物，不随 Git 提交；也可以按文末说明自行构建。
 
 ## 仓库内的便捷入口
 
