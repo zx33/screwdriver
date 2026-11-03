@@ -10,6 +10,7 @@
 | --- | --- | --- | --- |
 | **Markdown Review** | 对比两份 Markdown，查看行内修订或源码并排差异 | 浏览器 | [打开工具](tools/markdown-review/index.html) · [使用说明](tools/markdown-review/README.md) |
 | **Markdown → Word** | 将 Markdown 转成可继续编辑的 `.docx` 文档 | 浏览器 | [打开工具](tools/md-to-docx/index.html) · [使用说明](tools/md-to-docx/README.md) |
+| **mdcat** | 在终端阅读格式化的 Markdown，也可预览图片与公式 | macOS / Linux | [使用说明](tools/mdcat/README.md) |
 | **Mac Stats Bar** | 在 macOS 菜单栏查看系统状态、Codex 额度并收纳图标 | macOS 13+ | [图文介绍](tools/mac-stats-bar/index.html) · [构建与使用](tools/mac-stats-bar/README.md) |
 
 ## 开始使用
@@ -19,6 +20,18 @@
 打开根目录的 [`index.html`](index.html)，选择工具即可。也可以通过上表直接打开某个工具的页面。
 
 两个文档工具均在当前浏览器中读取和处理内容，不上传文档。支持直接打开本地文件，也支持通过静态文件服务器访问整个仓库。
+
+### mdcat
+
+需要 Go 1.27.3 或更新版本来构建；生成的独立可执行文件约 7 MB。在仓库根目录运行：
+
+```sh
+./tools/mdcat/scripts/build.sh
+./tools/mdcat/mdcat README.md
+./tools/mdcat/mdcat --browser README.md
+```
+
+终端中显示排版后的文字；浏览器预览支持图片和公式。设置命令别名和图片显示条件见 [mdcat 使用说明](tools/mdcat/README.md)。
 
 ### Mac Stats Bar
 
@@ -43,11 +56,12 @@ Codex 额度需要本机安装 Codex 并登录，查询经本机 Codex 连接 Op
 ├── tools/
 │   ├── markdown-review/      Markdown 对比：页面、脚本、样式与截图
 │   ├── md-to-docx/           Markdown 转 Word：页面、转换引擎与测试
+│   ├── mdcat/                终端 Markdown 查看与浏览器预览
 │   └── mac-stats-bar/        原生应用：页面、Swift 源码、构建脚本与文档
 └── LICENSE
 ```
 
-每个工具都有自己的 `README.md`、`index.html`、`styles.css` 和 `screenshot.jpg`。工具专用的源码、测试与文档放在各自目录；多个页面实际共用的资源放在 `assets/`。
+每个工具都有自己的 `README.md`；网页工具另有页面、样式与截图。工具专用的源码、测试与文档放在各自目录；多个页面实际共用的资源放在 `assets/`。
 
 ## 开发与维护
 
@@ -57,6 +71,7 @@ Codex 额度需要本机安装 Codex 并登录，查询经本机 Codex 连接 Op
 
 ```sh
 node --test tools/md-to-docx/tests/docx-engine.test.js
+(cd tools/mdcat && go test ./...)
 ./tools/mac-stats-bar/scripts/test.sh
 ```
 

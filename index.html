@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f7fb" />
-    <meta name="description" content="Screwdriver 本地工具箱：Markdown 对比、Markdown 转 Word 与 Mac 菜单栏工具。" />
+    <meta name="description" content="Screwdriver 本地工具箱：Markdown 对比、转换、终端阅读与 Mac 菜单栏工具。" />
     <title>Screwdriver · 本地工具箱</title>
     <link rel="stylesheet" href="assets/base.css" />
     <link rel="stylesheet" href="assets/toolbox.css" />
@@ -28,7 +28,7 @@
         <section class="toolbox-intro" aria-labelledby="toolbox-title">
           <p class="eyebrow">一把工具，解决一个小麻烦</p>
           <h2 id="toolbox-title">今天，拧哪颗螺丝？</h2>
-          <p>对一遍修改，转一份文档，或给 Mac 菜单栏腾点空间。<br />选好工具，就可以开始。</p>
+          <p>对一遍修改，转换或阅读文档，或给 Mac 菜单栏腾点空间。<br />选好工具，就可以开始。</p>
         </section>
 
         <section class="tool-grid" aria-label="工具目录">
@@ -85,9 +85,26 @@
               <a class="tool-docs" href="tools/mac-stats-bar/README.md" aria-label="Mac Stats Bar 构建与使用">构建与使用</a>
             </div>
           </article>
+
+          <article class="panel tool-card" aria-labelledby="mdcat-title">
+            <div class="tool-card-heading">
+              <span class="tool-symbol" aria-hidden="true">M›</span>
+              <span class="tool-platform">macOS / Linux · 命令行</span>
+            </div>
+            <h3 id="mdcat-title">mdcat</h3>
+            <p>在终端阅读排版后的 Markdown，也能预览图片与公式。</p>
+            <ul>
+              <li>标题、列表、表格与代码</li>
+              <li>支持管道和终端图片</li>
+              <li>浏览器预览图片与公式</li>
+            </ul>
+            <div class="tool-card-actions">
+              <a class="button button-primary" href="tools/mdcat/README.md">查看使用方法 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </section>
 
-        <p class="toolbox-note">文档工具可直接在浏览器中使用，内容留在本地。Mac Stats Bar 需要在 Mac 上构建并运行。</p>
+        <p class="toolbox-note">网页文档工具可直接在浏览器中使用。mdcat 提供独立可执行文件；Mac Stats Bar 需要在 Mac 上构建并运行。</p>
       </main>
 
       <footer class="footer">
