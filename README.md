@@ -6,12 +6,12 @@
 
 ## 工具目录
 
-| 工具与说明 | 用途 | 运行环境 |
-| --- | --- | --- |
-| **[Markdown Review](tools/markdown-review/README.md)** | 对比两份 Markdown，查看行内修订或源码并排差异 | 浏览器 |
-| **[Markdown → Word](tools/md-to-docx/README.md)** | 将 Markdown 转成可继续编辑的 `.docx` 文档 | 浏览器 |
-| **[mdcat](tools/mdcat/README.md)** | 在终端阅读格式化的 Markdown，也可预览图片与公式 | macOS / Linux |
-| **[Mac Stats Bar](tools/mac-stats-bar/README.md)** | 在 macOS 菜单栏查看系统状态、Codex 额度并收纳图标 | macOS 13+ |
+| 工具 | 用途 | 运行环境 | 说明 |
+| --- | --- | --- | --- |
+| **[Markdown Review](tools/markdown-review/README.md)** | 对比两份 Markdown，查看行内修订或源码并排差异 | 浏览器 | [使用说明](tools/markdown-review/README.md) |
+| **[Markdown → Word](tools/md-to-docx/README.md)** | 将 Markdown 转成可继续编辑的 `.docx` 文档 | 浏览器 | [使用说明](tools/md-to-docx/README.md) |
+| **[mdcat](tools/mdcat/README.md)** | 在终端阅读格式化的 Markdown，也可预览图片与公式 | macOS / Linux | [使用说明](tools/mdcat/README.md) |
+| **[Mac Stats Bar](tools/mac-stats-bar/README.md)** | 在 macOS 菜单栏查看系统状态、Codex 额度并收纳图标 | macOS 13+ | [使用说明](tools/mac-stats-bar/README.md) |
 
 ## 开始使用
 
