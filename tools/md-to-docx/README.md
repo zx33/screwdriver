@@ -2,11 +2,11 @@
 
 粘贴 Markdown 或拖入 `.md` 文件，在浏览器中生成可继续编辑的 `.docx` 文档。
 
-[← 返回工具箱](../../README.md) · [打开工具](index.html)
+[← 返回工具箱](../../README.md)
 
 ## 使用
 
-1. 用浏览器打开本目录的 `index.html`。
+1. 下载或克隆本仓库，在本机浏览器中打开 `tools/md-to-docx/index.html`。
 2. 粘贴 Markdown，或选择 / 拖入 `.md` 文件。
 3. 在右侧查看近似排版预览，填写输出文件名。
 4. 点击「导出 .docx」，用 Word 打开生成的文档。

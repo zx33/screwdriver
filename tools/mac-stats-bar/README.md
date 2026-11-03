@@ -2,7 +2,7 @@
 
 一个原生 macOS 菜单栏工具，集中显示系统状态、Codex 订阅额度，并提供菜单栏图标收纳预览。
 
-[← 返回工具箱](../../README.md) · [图文介绍](index.html) · [开发说明](docs/development.md)
+[← 返回工具箱](../../README.md) · [开发说明](docs/development.md)
 
 ## 使用
 
@@ -21,7 +21,7 @@ open "tools/mac-stats-bar/dist/Mac Stats Bar Preview.app"
 
 默认菜单栏只显示小箭头。关闭设置中的「菜单栏只显示小箭头」，可恢复 `CPU 12% · C 76%` 读数。`C` 是选中额度组的剩余百分比；同时有多个窗口时显示其中最小值。
 
-<img src="screenshot.jpg" alt="Mac Stats Bar 系统状态与 Codex 额度面板，全部为虚构演示数据" width="390" />
+![Mac Stats Bar 系统状态与 Codex 额度面板，全部为虚构演示数据](screenshot.jpg)
 
 截图使用虚构演示数据。
 

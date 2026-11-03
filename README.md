@@ -2,22 +2,22 @@
 
 一个小而灵巧的本地工具箱，处理文档对比、格式转换和 Mac 菜单栏里的小麻烦。
 
-**[打开工具箱首页](index.html)** · 下载或克隆仓库后，可直接用浏览器打开，无需安装前端依赖。
+在 GitHub 上可以直接阅读下方各工具的 Markdown 说明。下载或克隆仓库后，也可以在本机浏览器中打开工具箱首页 `index.html`。
 
 ## 工具目录
 
-| 工具 | 用途 | 运行环境 | 入口与说明 |
-| --- | --- | --- | --- |
-| **Markdown Review** | 对比两份 Markdown，查看行内修订或源码并排差异 | 浏览器 | [打开工具](tools/markdown-review/index.html) · [使用说明](tools/markdown-review/README.md) |
-| **Markdown → Word** | 将 Markdown 转成可继续编辑的 `.docx` 文档 | 浏览器 | [打开工具](tools/md-to-docx/index.html) · [使用说明](tools/md-to-docx/README.md) |
-| **mdcat** | 在终端阅读格式化的 Markdown，也可预览图片与公式 | macOS / Linux | [使用说明](tools/mdcat/README.md) |
-| **Mac Stats Bar** | 在 macOS 菜单栏查看系统状态、Codex 额度并收纳图标 | macOS 13+ | [图文介绍](tools/mac-stats-bar/index.html) · [构建与使用](tools/mac-stats-bar/README.md) |
+| 工具与说明 | 用途 | 运行环境 |
+| --- | --- | --- |
+| **[Markdown Review](tools/markdown-review/README.md)** | 对比两份 Markdown，查看行内修订或源码并排差异 | 浏览器 |
+| **[Markdown → Word](tools/md-to-docx/README.md)** | 将 Markdown 转成可继续编辑的 `.docx` 文档 | 浏览器 |
+| **[mdcat](tools/mdcat/README.md)** | 在终端阅读格式化的 Markdown，也可预览图片与公式 | macOS / Linux |
+| **[Mac Stats Bar](tools/mac-stats-bar/README.md)** | 在 macOS 菜单栏查看系统状态、Codex 额度并收纳图标 | macOS 13+ |
 
 ## 开始使用
 
 ### 文档工具
 
-打开根目录的 [`index.html`](index.html)，选择工具即可。也可以通过上表直接打开某个工具的页面。
+下载或克隆仓库后，在本机浏览器中打开根目录的 `index.html`，选择需要的工具。也可以直接在本机打开 `tools/markdown-review/index.html` 或 `tools/md-to-docx/index.html`。
 
 两个文档工具均在当前浏览器中读取和处理内容，不上传文档。支持直接打开本地文件，也支持通过静态文件服务器访问整个仓库。
 
